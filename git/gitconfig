@@ -1,0 +1,63 @@
+[user]
+	name = Jesper Birkestrøm
+	email = jesper@birkestroem.dk
+
+[includeIf "gitdir:~/Projects/onecom"]
+    path = ~/dotfiles/git/gitconfig_onecom
+
+[includeIf "gitdir:~/Projects/bluebit"]
+    path = ~/dotfiles/git/gitconfig_bluebit
+
+[includeIf "gitdir:~/Projects/supwiz"]
+    path = ~/dotfiles/git/gitconfig_supwiz
+
+[core]
+	editor = vim
+	excludesfile = /Users/jesper/dotfiles/git/gitignore
+	whitespace = -trailing-space,-space-before-tab
+
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+
+[alias]
+	st = status
+	s = status -s
+	ci = commit
+	cbr = !git checkout $(git branch --format='%(refname:short)' | tail -n +2| fzf)
+	br = branch
+	co = checkout
+	rb = rebase
+	df = diff
+	lg = log -p
+	pr = pull --rebase
+	pp = !git pull --rebase && git push
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    slog = log --graph --all --topo-order --pretty='format:%h %ai %s%d (%an)'
+	apropos = "!grepalias() { git config --global --get-regexp alias | grep -i \"$1\" | awk -v nr=2 '{sub(/^alias\\./,\"\")};{printf \"\\033[31m%15s\\033[1;37m\", $1};{sep=FS};{for (x=nr; x<=NF; x++) {printf \"%s%s\", sep, $x; }; print \"\\033[0;39m\"}'; }; grepalias"
+	filelog = log -u
+	l = log --graph --date=short
+	changes = log --oneline --reverse
+	files = log --pretty=format:"%h %cr %cn %Cgreen%s%Creset" --name-status
+	h = log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
+	short = log --pretty=format:"%h %cr %cn %Cgreen%s%Creset"
+	bullets = log --pretty=format:"* %s"
+	type = cat-file -t
+	dump = cat-file -p
+	r = remote -v
+	unstage = reset HEAD
+	uncommit = reset --soft HEAD^
+
+[push]
+	default = simple
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+	
+[pager]
+	branch = false

@@ -1,0 +1,211 @@
+export ZSH_DISABLE_COMPFIX="true"
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="${HOME}/dotfiles/oh-my-zsh"
+
+DEFAULT_USER=`whoami`
+
+# ZSH_THEME="gallois"
+# ZSH_THEME="minimal"
+ZSH_THEME="simple"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+plugins=(
+    # httpie
+    1password
+)
+
+# External services
+plugins+=(aws terraform) 
+
+# Configuration management
+plugins+=(ansible)
+
+# Variable management
+plugins+=(direnv dotenv) 
+
+# ?
+plugins+=(mosh screen ssh-agent)
+zstyle :omz:plugins:ssh-agent identities id_rsa_private id_rsa_supwiz
+
+# Utils
+plugins+=(encode64 gnu-utils urltools)
+
+# Containers
+export PATH="${PATH}:${HOME}/.krew/bin"
+plugins+=(docker kubectl kube-ps1) 
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+KUBE_PS1_PREFIX="["
+KUBE_PS1_SUFFIX="]"
+KUBE_PS1_SYMBOL_ENABLE=false
+RPROMPT='$(kube_ps1)'
+
+# Development
+plugins+=(npm nvm yarn) 
+plugins+=(rbenv ruby) 
+plugins+=(python)
+
+
+# Navigation
+plugins+=(dircycle dirhistory last-working-dir fzf) 
+
+## FZF
+# if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+#   PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+# fi
+# [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+# source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+# export FZF_BASE=/opt/homebrew/opt/fzf
+# export FZF_DEFAULT_COMMAND='fzf'
+#DISABLE_FZF_AUTO_COMPLETION="true"
+#DISABLE_FZF_KEY_BINDINGS="true"
+#plugins+=(fzf) 
+
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+# VCS
+plugins+=(git) 
+
+# PHP
+#export PATH="$HOME/.phpenv/bin:$PATH"
+#plugins+=(phpenv)
+
+# Homebrew
+plugins+=(brew)
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+
+#export PHPENV_ROOT="${HOME}/.phpenv"
+#if [[ -d "${PHPENV_ROOT}" ]]; then
+#  export PATH="${PHPENV_ROOT}/bin:${PATH}";
+#  eval "$(phpenv init -)";
+#fi
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/jesper/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jesper/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jesper/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jesper/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+# source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+
+alias conda-env='conda activate "$(conda info --envs | tail -n +3 | head -n -1 | fzf | awk "{print \$1}")"'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

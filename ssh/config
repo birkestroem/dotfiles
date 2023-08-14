@@ -1,0 +1,31 @@
+Host *
+    ForwardAgent yes
+    Protocol 2
+    ServerAliveInterval 300
+    TCPKeepAlive no
+    UseKeychain yes
+    AddKeysToAgent yes
+#    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+Host *.compute.amazonaws.com
+    User ec2-user
+
+## Supwiz Servers ###
+Host *.cloudapp.azure.com
+    User jbirkestroem
+    IdentityFile ~/.ssh/id_rsa_supwiz
+
+Host *.one.com *.env.dev-cph3.one.com
+    User jbi
+    StrictHostKeyChecking no
+    ForwardAgent yes
+    SendEnv EDITOR ONECOMID
+
+## Bluebit Servers ##
+Host *.bluebit.dk
+    IdentityFile ~/.ssh/id_rsa_private
+    User jesper
+    Port 22
+
+## Private servers ##
+Host ds920p

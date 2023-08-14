@@ -1,0 +1,2 @@
+filter-code: "not host newrelic.com and not host vultr.com and not host statuscake.com"
+line-display: one-line-both
