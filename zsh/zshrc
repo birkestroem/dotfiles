@@ -72,6 +72,47 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+#plugins+=(httpie)
+
+# Password management
+plugins+=(1password)
+
+# External services
+plugins+=(aws terraform) 
+
+# Configuration management
+plugins+=(ansible)
+
+# Variable management
+plugins+=(direnv dotenv) 
+
+# Terminal
+plugins+=(mosh screen ssh-agent)
+zstyle :omz:plugins:ssh-agent identities id_rsa_private id_rsa_supwiz
+
+# Utils
+plugins+=(encode64 gnu-utils urltools)
+
+# Containers
+export PATH="${PATH}:${HOME}/.krew/bin"
+plugins+=(docker kubectl kube-ps1) 
+
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+KUBE_PS1_PREFIX="["
+KUBE_PS1_SUFFIX="]"
+KUBE_PS1_SYMBOL_ENABLE=false
+RPROMPT='$(kube_ps1)'
+
+# Development
+plugins+=(npm nvm yarn) 
+#plugins+=(rbenv ruby) 
+plugins+=(python)
+
+# Navigation
+plugins+=(dircycle dirhistory last-working-dir fzf) 
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
