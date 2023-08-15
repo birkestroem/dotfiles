@@ -14,3 +14,5 @@ ln -fs $CWD/vim/vimrc ~/.vimrc
 for rcfile in $CWD/zsh/z{shenv,shrc,login,logout}; do 
     ln -fs $rcfile ~/.`basename $rcfile` 
 done
+
+ln -fs $CWD/condarc ~/.condarc

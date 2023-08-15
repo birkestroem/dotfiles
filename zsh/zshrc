@@ -133,7 +133,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 
-alias conda-env='conda activate "$(conda info --envs | tail -n +3 | head -n -1 | fzf | awk "{print \$1}")"'
+alias conda-activate='conda activate "$(conda info --envs | tail -n +3 | head -n -1 | fzf | awk "{print \$1}")"'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
