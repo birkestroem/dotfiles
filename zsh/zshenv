@@ -7,5 +7,3 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-alias tree='tree -I "node_modules|.git"'

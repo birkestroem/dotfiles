@@ -150,3 +150,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+alias tree='tree -I "node_modules|.git"'
