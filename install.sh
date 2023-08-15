@@ -5,7 +5,6 @@ CWD=$(cd $(dirname $0); pwd)
 
 ln -fs $CWD/dig/digrc ~/.digrc 
 ln -fs $CWD/git/gitconfig ~/.gitconfig
-#ln -fs $CWD/kube ~/.kube
 ln -fs $CWD/psqlrc ~/.psqlrc
 ln -fs $CWD/dsh ~/.dsh
 mkdir -p ~/.ssh
