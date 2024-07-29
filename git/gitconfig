@@ -2,18 +2,15 @@
 	name = Jesper Birkestrøm
 	email = jesper@birkestroem.dk
 
-[includeIf "gitdir:~/Projects/onecom"]
-    path = ~/dotfiles/git/gitconfig_onecom
+[includeIf "gitdir:~/Projects/bluebit/"]
+    path = ~/Projects/private/dotfiles/git/gitconfig_bluebit
 
-[includeIf "gitdir:~/Projects/bluebit"]
-    path = ~/dotfiles/git/gitconfig_bluebit
-
-[includeIf "gitdir:~/Projects/supwiz"]
-    path = ~/dotfiles/git/gitconfig_supwiz
+[includeIf "gitdir:~/Projects/missgroup/"]
+    path = ~/Projects/private/dotfiles/git/gitconfig_missgroup
 
 [core]
 	editor = vim
-	excludesfile = /Users/jesper/dotfiles/git/gitignore
+	excludesfile = gitignore
 	whitespace = -trailing-space,-space-before-tab
 
 [color]
