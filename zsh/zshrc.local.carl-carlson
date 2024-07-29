@@ -1,0 +1,17 @@
+# -*- mode: sh -*-
+
+# Variable management
+plugins+=(direnv dotenv)
+
+# Terminals and remote access
+plugins+=(mosh screen ssh-agent)
+zstyle :omz:plugins:ssh-agent identities id_rsa
+
+# Navigation
+plugins+=(dircycle dirhistory last-working-dir fzf) 
+
+# VCS
+plugins+=(git)
+
+# Package management
+plugins+=(brew)

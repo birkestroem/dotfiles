@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 export ZSH_DISABLE_COMPFIX="true"
 
 # If you come from bash you might have to change your $PATH.
@@ -60,6 +62,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+
+plugins=()
 
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
