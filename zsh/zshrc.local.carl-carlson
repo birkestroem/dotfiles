@@ -20,5 +20,5 @@ plugins+=(brew)
 plugins+=(zsh-autosuggestions)
 
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
-plugins+=(zsh-syntax-highlighting)
+# plugins+=(zsh-syntax-highlighting)
 
