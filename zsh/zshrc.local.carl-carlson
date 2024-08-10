@@ -5,7 +5,7 @@ plugins+=(direnv dotenv)
 
 # Terminals and remote access
 plugins+=(mosh screen ssh-agent)
-zstyle :omz:plugins:ssh-agent identities id_rsa
+zstyle :omz:plugins:ssh-agent identities id_rsa id_rsa_missgroup
 
 # Navigation
 plugins+=(dircycle dirhistory last-working-dir fzf) 

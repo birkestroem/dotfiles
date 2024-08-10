@@ -29,3 +29,8 @@ Host *.bluebit.dk
 
 ## Private servers ##
 Host ds920p
+
+Host bitbucket.org
+    HostName bitbucket.org
+    User git
+    IdentityFile /Users/jesper/.ssh/id_rsa_missgroup
