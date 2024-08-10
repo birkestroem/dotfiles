@@ -22,3 +22,7 @@ plugins+=(zsh-autosuggestions)
 # https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md#oh-my-zsh
 # plugins+=(zsh-syntax-highlighting)
 
+# Node.js
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+plugins+=(node npm yarn)
